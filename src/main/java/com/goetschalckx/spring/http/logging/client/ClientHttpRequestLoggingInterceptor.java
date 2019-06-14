@@ -14,10 +14,12 @@ import org.springframework.http.client.ClientHttpResponse;
 
 import java.io.IOException;
 
+import static com.goetschalckx.spring.http.logging.LoggingConstants.SPAN_KIND;
+
 public class ClientHttpRequestLoggingInterceptor implements ClientHttpRequestInterceptor {
 
     private static final Logger log = LoggerFactory.getLogger(ClientHttpRequestLoggingInterceptor.class);
-    private static final String SPAN_KIND = SpanType.CLIENT.logValue();
+    private static final String SPAN_KIND_CLIENT = SpanType.CLIENT.logValue();
 
     private final boolean includeBody;
     private final ClientLogger clientLogger;
@@ -47,7 +49,7 @@ public class ClientHttpRequestLoggingInterceptor implements ClientHttpRequestInt
 
         String spanId = spanIdGenerator.spanId();
         MDC.put(LoggingConstants.SPAN_ID, spanId);
-        MDC.put(SPAN_KIND, SPAN_KIND);
+        MDC.put(SPAN_KIND, SPAN_KIND_CLIENT);
 
         try {
             return log(request, body, execution, spanId);
@@ -68,7 +70,7 @@ public class ClientHttpRequestLoggingInterceptor implements ClientHttpRequestInt
 
         LogEventContext context = new LogEventContext(
                 includeBody,
-                SPAN_KIND,
+                SPAN_KIND_CLIENT,
                 spanId,
                 method,
                 url);

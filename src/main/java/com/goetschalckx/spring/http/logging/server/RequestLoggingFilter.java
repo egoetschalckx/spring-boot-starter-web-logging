@@ -15,9 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static com.goetschalckx.spring.http.logging.LoggingConstants.SPAN_KIND;
+
 public class RequestLoggingFilter extends OncePerRequestFilter {
 
-    private static final String SPAN_KIND = SpanType.SERVER.logValue();
+    private static final String SPAN_KIND_SERVER = SpanType.SERVER.logValue();
 
     private final boolean includeBody;
     private final ServerLogger serverLogger;
@@ -41,7 +43,7 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
     ) throws ServletException, IOException {
         String spanId = spanIdGenerator.spanId();
         MDC.put(LoggingConstants.SPAN_ID, spanId);
-        MDC.put(SPAN_KIND, SPAN_KIND);
+        MDC.put(SPAN_KIND, SPAN_KIND_SERVER);
 
         try {
             doFilterInternalInternal(request, response, filterChain, spanId);
