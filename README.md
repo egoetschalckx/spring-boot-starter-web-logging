@@ -3,7 +3,7 @@
 Provides automated web request and response logging for Spring (including advanced logback functionality)
 
 ## Minimum Requirements
-Requires `spring-boot-starter-web` `1.4.0.RELEASE'` or higher.
+Requires `spring-boot-starter-web` `1.4.0.RELEASE` or higher.
   
 ## Spring Configuration
 `spring-boot-starter-web-logging` includes request & response logging mechanisms for Spring `RestTemplate` and `RestController`.
@@ -28,3 +28,6 @@ logging:
      # Optional (default is false)
      include-body: true
 ```
+
+## Notes
+This library complements `spring-boot-starter-logging-ndjson` quite nicely.
