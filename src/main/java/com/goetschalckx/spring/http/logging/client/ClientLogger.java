@@ -31,7 +31,7 @@ public class ClientLogger {
                 responseBody = "[unknown]";
             }
 
-            log.debug(
+            log.info(
                     Markers.appendEntries(context.getArgs()),
                     "Inbound Message\n"
                             + "----------------------------\n"
@@ -51,7 +51,7 @@ public class ClientLogger {
                     response.getHeaders(),
                     responseBody);
         } else {
-            log.debug(
+            log.info(
                     Markers.appendEntries(context.getArgs()),
                     "Inbound Message\n"
                             + "--------------------------------------\n"
@@ -75,7 +75,7 @@ public class ClientLogger {
         LogArgUtils.addHeaders(context.getArgs(), request.getHeaders());
 
         if (context.getIncludeBody()) {
-            log.debug(
+            log.info(
                     Markers.appendEntries(context.getArgs()),
                     "Outbound Message\n"
                             + "--------------------------------------\n"
@@ -93,7 +93,7 @@ public class ClientLogger {
                     request.getHeaders(),
                     new String(body, StandardCharsets.UTF_8));
         } else {
-            log.debug(
+            log.info(
                     Markers.appendEntries(context.getArgs()),
                     "Outbound Message\n"
                             + "--------------------------------------\n"

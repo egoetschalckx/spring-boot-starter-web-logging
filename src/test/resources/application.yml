@@ -1,7 +1,4 @@
 logging:
-  level:
-    com.goetschalckx.spring.http: debug
-
   web:
     enabled: true
     #include-body: true

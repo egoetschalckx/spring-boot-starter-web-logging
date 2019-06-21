@@ -1,4 +1,4 @@
-package com.goetschalckx.spring.http.logging;
+package com.goetschalckx.spring.http.logging.span;
 
 import java.util.Locale;
 

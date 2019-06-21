@@ -2,7 +2,7 @@ package com.goetschalckx.spring.http.logging.server;
 
 import com.goetschalckx.spring.http.logging.LogEventContext;
 import com.goetschalckx.spring.http.logging.LoggingConstants;
-import com.goetschalckx.spring.http.logging.SpanType;
+import com.goetschalckx.spring.http.logging.span.SpanType;
 import com.goetschalckx.spring.http.logging.span.SpanIdGenerator;
 import org.slf4j.MDC;
 import org.springframework.web.filter.OncePerRequestFilter;

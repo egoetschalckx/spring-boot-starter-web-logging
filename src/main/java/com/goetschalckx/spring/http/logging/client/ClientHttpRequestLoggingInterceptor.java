@@ -2,7 +2,7 @@ package com.goetschalckx.spring.http.logging.client;
 
 import com.goetschalckx.spring.http.logging.LogEventContext;
 import com.goetschalckx.spring.http.logging.LoggingConstants;
-import com.goetschalckx.spring.http.logging.SpanType;
+import com.goetschalckx.spring.http.logging.span.SpanType;
 import com.goetschalckx.spring.http.logging.span.SpanIdGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,8 +42,8 @@ public class ClientHttpRequestLoggingInterceptor implements ClientHttpRequestInt
             ClientHttpRequestExecution execution
     ) throws IOException {
 
-        // TODO: [eg] i really hate these... is there a better way? what if its not debug?
-        if (!log.isDebugEnabled()) {
+        // TODO: [eg] i really hate these... is there a better way? what if its not info level?
+        if (!log.isInfoEnabled()) {
             return execution.execute(request, body);
         }
 

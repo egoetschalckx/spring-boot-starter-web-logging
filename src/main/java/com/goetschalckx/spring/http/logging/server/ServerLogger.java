@@ -35,7 +35,7 @@ public class ServerLogger {
             HttpHeaders httpHeaders = getResponseHeaders(response);
             LogArgUtils.addHeaders(context.getArgs(), httpHeaders);
 
-            log.debug(
+            log.info(
                     Markers.appendEntries(context.getArgs()),
                     "Outbound Message\n"
                             + "--------------------------------------\n"
@@ -61,7 +61,7 @@ public class ServerLogger {
             HttpHeaders httpHeaders = getResponseHeaders(responseWrapper);
             LogArgUtils.addHeaders(context.getArgs(), httpHeaders);
 
-            log.debug(
+            log.info(
                     Markers.appendEntries(context.getArgs()),
                     "Outbound Message\n"
                             + "--------------------------------------\n"
@@ -88,7 +88,7 @@ public class ServerLogger {
             // TODO: like above. problem is i only want to read the stream if the thingy is enabled, but i always want the headers
             HttpHeaders httpHeaders = getRequestHeaders(request);
             LogArgUtils.addHeaders(context.getArgs(), httpHeaders);
-            log.debug(
+            log.info(
                     Markers.appendEntries(context.getArgs()),
                     "Inbound Message\n"
                             + "--------------------------------------\n"
@@ -109,7 +109,7 @@ public class ServerLogger {
             HttpHeaders httpHeaders = getRequestHeaders(request);
             LogArgUtils.addHeaders(context.getArgs(), httpHeaders);
 
-            log.debug(
+            log.info(
                     Markers.appendEntries(context.getArgs()),
                     "Inbound Message\n"
                             + "--------------------------------------\n"
