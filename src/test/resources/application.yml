@@ -1,0 +1,4 @@
+logging:
+  web:
+    enabled: true
+    #include-body: true
