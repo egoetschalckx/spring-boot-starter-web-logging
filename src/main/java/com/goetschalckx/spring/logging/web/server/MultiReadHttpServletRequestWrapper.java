@@ -1,4 +1,4 @@
-package com.goetschalckx.spring.http.logging.server;
+package com.goetschalckx.spring.logging.web.server;
 
 import javax.servlet.ReadListener;
 import javax.servlet.ServletInputStream;

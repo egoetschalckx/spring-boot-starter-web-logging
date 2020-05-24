@@ -1,4 +1,4 @@
-package com.goetschalckx.spring.http.logging;
+package com.goetschalckx.spring.logging.web;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;

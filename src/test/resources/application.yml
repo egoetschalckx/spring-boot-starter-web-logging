@@ -1,4 +1,8 @@
 logging:
   web:
-    enabled: true
-    #include-body: true
+    client:
+      enabled: true
+      include-body: true
+    server:
+      enabled: true
+      #include-body: true

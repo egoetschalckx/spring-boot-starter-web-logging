@@ -1,9 +1,9 @@
-package com.goetschalckx.spring.http.logging.client;
+package com.goetschalckx.spring.logging.web.client;
 
-import com.goetschalckx.spring.http.logging.LogEventContext;
-import com.goetschalckx.spring.http.logging.LoggingConstants;
-import com.goetschalckx.spring.http.logging.span.SpanType;
-import com.goetschalckx.spring.http.logging.span.SpanIdGenerator;
+import com.goetschalckx.spring.logging.web.LogEventContext;
+import com.goetschalckx.spring.logging.web.LoggingConstants;
+import com.goetschalckx.spring.logging.web.span.SpanType;
+import com.goetschalckx.spring.logging.web.span.SpanIdGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -13,8 +13,6 @@ import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.ClientHttpResponse;
 
 import java.io.IOException;
-
-import static com.goetschalckx.spring.http.logging.LoggingConstants.SPAN_KIND;
 
 public class ClientHttpRequestLoggingInterceptor implements ClientHttpRequestInterceptor {
 
@@ -49,13 +47,13 @@ public class ClientHttpRequestLoggingInterceptor implements ClientHttpRequestInt
 
         String spanId = spanIdGenerator.spanId();
         MDC.put(LoggingConstants.SPAN_ID, spanId);
-        MDC.put(SPAN_KIND, SPAN_KIND_CLIENT);
+        MDC.put(LoggingConstants.SPAN_KIND, SPAN_KIND_CLIENT);
 
         try {
             return log(request, body, execution, spanId);
         } finally {
             MDC.remove(LoggingConstants.SPAN_ID);
-            MDC.remove(SPAN_KIND);
+            MDC.remove(LoggingConstants.SPAN_KIND);
         }
     }
 

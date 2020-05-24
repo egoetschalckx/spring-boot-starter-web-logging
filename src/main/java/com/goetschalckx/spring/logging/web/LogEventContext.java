@@ -1,11 +1,9 @@
-package com.goetschalckx.spring.http.logging;
+package com.goetschalckx.spring.logging.web;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.util.StringUtils;
-
-import static com.goetschalckx.spring.http.logging.LogArgUtils.addIfValuePresent;
 
 public class LogEventContext {
 
@@ -29,10 +27,10 @@ public class LogEventContext {
         this.method = method;
         this.url = url;
 
-        addIfValuePresent(args, LoggingConstants.SPAN_KIND, spanKind);
-        addIfValuePresent(args, LoggingConstants.SPAN_ID, spanId);
-        addIfValuePresent(args, LoggingConstants.HTTP_METHOD, method);
-        addIfValuePresent(args, LoggingConstants.HTTP_URL, url);
+        LogArgUtils.addIfValuePresent(args, LoggingConstants.SPAN_KIND, spanKind);
+        LogArgUtils.addIfValuePresent(args, LoggingConstants.SPAN_ID, spanId);
+        LogArgUtils.addIfValuePresent(args, LoggingConstants.HTTP_METHOD, method);
+        LogArgUtils.addIfValuePresent(args, LoggingConstants.HTTP_URL, url);
     }
 
     public boolean getIncludeBody() {

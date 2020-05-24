@@ -1,22 +1,23 @@
-package com.goetschalckx.spring.http.logging.server;
+package com.goetschalckx.spring.logging.web.server;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponseWrapper;
 
-import com.goetschalckx.spring.http.logging.LogArgUtils;
-import com.goetschalckx.spring.http.logging.LogEventContext;
-import com.goetschalckx.spring.http.logging.LoggingConstants;
+import com.goetschalckx.spring.logging.web.LogArgUtils;
+import com.goetschalckx.spring.logging.web.LogEventContext;
+import com.goetschalckx.spring.logging.web.LoggingConstants;
 import net.logstash.logback.marker.Markers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 
-import static com.goetschalckx.spring.http.logging.server.RequestUtils.getRequestBody;
-import static com.goetschalckx.spring.http.logging.server.RequestUtils.getRequestHeaders;
-import static com.goetschalckx.spring.http.logging.server.ResponseUtils.getResponseBody;
-import static com.goetschalckx.spring.http.logging.server.ResponseUtils.getResponseHeaders;
-import static com.goetschalckx.spring.http.logging.server.ResponseUtils.getResponseWrapper;
+import static com.goetschalckx.spring.logging.web.server.RequestUtils.getRequestBody;
+import static com.goetschalckx.spring.logging.web.server.RequestUtils.getRequestHeaders;
+import static com.goetschalckx.spring.logging.web.server.ResponseUtils.getResponseBody;
+import static com.goetschalckx.spring.logging.web.server.ResponseUtils.getResponseHeaders;
+import static com.goetschalckx.spring.logging.web.server.ResponseUtils.getResponseWrapper;
 
 public class ServerLogger {
 
@@ -24,7 +25,6 @@ public class ServerLogger {
     private static final int DEFAULT_MAX_PAYLOAD_LENGTH = 1024;
 
     public void logResponse(LogEventContext context, HttpServletResponse response) {
-
         int status = response.getStatus();
         context.getArgs().put(LoggingConstants.HTTP_RESPONSE_CODE, Integer.toString(status));
 
@@ -55,7 +55,7 @@ public class ServerLogger {
                     httpHeaders,
                     responseBody);
         } else {
-            ContentCachingResponseWrapper responseWrapper = getResponseWrapper(response);
+            HttpServletResponseWrapper responseWrapper = getResponseWrapper(response);
 
             // TODO: at some point i had to (safely) read the stream before the headers so i wouldnt invalidate the stream... maybe double check this...
             HttpHeaders httpHeaders = getResponseHeaders(responseWrapper);

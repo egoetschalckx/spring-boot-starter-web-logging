@@ -1,9 +1,9 @@
-package com.goetschalckx.spring.http.logging.server;
+package com.goetschalckx.spring.logging.web.server;
 
-import com.goetschalckx.spring.http.logging.LogEventContext;
-import com.goetschalckx.spring.http.logging.LoggingConstants;
-import com.goetschalckx.spring.http.logging.span.SpanType;
-import com.goetschalckx.spring.http.logging.span.SpanIdGenerator;
+import com.goetschalckx.spring.logging.web.LogEventContext;
+import com.goetschalckx.spring.logging.web.LoggingConstants;
+import com.goetschalckx.spring.logging.web.span.SpanType;
+import com.goetschalckx.spring.logging.web.span.SpanIdGenerator;
 import org.slf4j.MDC;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.ContentCachingResponseWrapper;
@@ -12,10 +12,10 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponseWrapper;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.concurrent.ThreadLocalRandom;
-
-import static com.goetschalckx.spring.http.logging.LoggingConstants.SPAN_KIND;
 
 public class RequestLoggingFilter extends OncePerRequestFilter {
 
@@ -43,13 +43,13 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
     ) throws ServletException, IOException {
         String spanId = spanIdGenerator.spanId();
         MDC.put(LoggingConstants.SPAN_ID, spanId);
-        MDC.put(SPAN_KIND, SPAN_KIND_SERVER);
+        MDC.put(LoggingConstants.SPAN_KIND, SPAN_KIND_SERVER);
 
         try {
             doFilterInternalInternal(request, response, filterChain, spanId);
         } finally {
             MDC.remove(LoggingConstants.SPAN_ID);
-            MDC.remove(SPAN_KIND);
+            MDC.remove(LoggingConstants.SPAN_KIND);
         }
     }
 
@@ -62,13 +62,20 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         boolean isFirstRequest = !isAsyncDispatch(request);
 
         HttpServletRequest requestToUse = request;
-        if (isFirstRequest && !(request instanceof MultiReadHttpServletRequestWrapper)) {
+        if (includeBody
+                && isFirstRequest
+                && !(request instanceof MultiReadHttpServletRequestWrapper)) {
             requestToUse = new MultiReadHttpServletRequestWrapper(request);
         }
 
         HttpServletResponse responseToUse = response;
-        if (!(response instanceof ContentCachingResponseWrapper)) {
+        if (includeBody
+                 && !(response instanceof ContentCachingResponseWrapper)) {
             responseToUse = new ContentCachingResponseWrapper(response);
+        } else if (!(response instanceof HttpServletResponseWrapper)) {
+            responseToUse = new HttpServletResponseWrapper(response);
+        } else {
+            int temp = 42;
         }
 
         try {

@@ -1,5 +1,6 @@
-package com.goetschalckx.spring.http.logging.server;
+package com.goetschalckx.spring.logging.web.server;
 
+import com.goetschalckx.spring.logging.web.LoggingConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -33,7 +34,7 @@ public class RequestUtils {
                     try {
                         payload = new String(buf, 0, length, requestWrapper.getCharacterEncoding());
                     } catch (UnsupportedEncodingException ex) {
-                        payload = "[unknown]";
+                        payload = LoggingConstants.UNKNOWN;
                     }
 
                     requestBody = payload;
