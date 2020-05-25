@@ -1,9 +1,5 @@
 package com.goetschalckx.spring.logging.web.server;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpServletResponseWrapper;
-
 import com.goetschalckx.spring.logging.web.LogArgUtils;
 import com.goetschalckx.spring.logging.web.LogEventContext;
 import com.goetschalckx.spring.logging.web.LoggingConstants;
@@ -11,7 +7,10 @@ import net.logstash.logback.marker.Markers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
-import org.springframework.web.util.ContentCachingResponseWrapper;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponseWrapper;
 
 import static com.goetschalckx.spring.logging.web.server.RequestUtils.getRequestBody;
 import static com.goetschalckx.spring.logging.web.server.RequestUtils.getRequestHeaders;
