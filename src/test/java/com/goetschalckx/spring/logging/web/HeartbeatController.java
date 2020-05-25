@@ -33,7 +33,7 @@ public class HeartbeatController {
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody HeartbeatResponse heartbeat() {
-        ResponseEntity<HeartbeatResponse> responseResponseEntity = getHeartbeat();
+        //ResponseEntity<HeartbeatResponse> responseResponseEntity = getHeartbeat();
 
         return new HeartbeatResponse(Instant.now());
     }
