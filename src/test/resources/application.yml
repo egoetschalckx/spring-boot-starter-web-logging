@@ -5,4 +5,4 @@ logging:
       include-body: true
     server:
       enabled: true
-      #include-body: true
+      include-body: true

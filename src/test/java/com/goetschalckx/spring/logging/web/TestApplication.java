@@ -45,7 +45,7 @@ public class TestApplication {
     }
 
     //@Test
-    public void getHeartbeats() throws Exception {
+    public void getHeartbeats() {
         String url = "http://localhost:8080/heartbeat?foo=bar";
 
         int x = 1;
@@ -54,7 +54,7 @@ public class TestApplication {
             ResponseEntity<HeartbeatResponse> responseEntity = getHeartbeat(url);
             HeartbeatResponse response = responseEntity.getBody();
             Instant time = response.time;
-            log.info("Got heartbeat {}",
+            log.info("Got heartbeat {} {}",
                     v("heartbeat", time),
                     v("rnd", ThreadLocalRandom.current().nextInt(1, 4)));
         }

@@ -2,7 +2,8 @@ package com.goetschalckx.spring.logging.web;
 
 public class LoggingConstants {
 
-    private static final String  LOGGING_PREFIX = "logging.web";
+    private static final String LOGGING_PREFIX = "logging.web";
+
     public static final String LOGGING_PREFIX_CLIENT = LOGGING_PREFIX + ".client";
     public static final String LOGGING_PREFIX_SERVER = LOGGING_PREFIX + ".server";
     public static final String LOGGING_ENABLED = "enabled";

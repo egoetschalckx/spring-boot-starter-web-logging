@@ -80,7 +80,7 @@ public class MultiReadHttpServletRequestWrapper extends HttpServletRequestWrappe
         }
 
         @Override
-        public int read() throws IOException {
+        public int read() {
             return buffer.read();
         }
 
