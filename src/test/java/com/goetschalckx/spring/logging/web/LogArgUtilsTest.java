@@ -18,7 +18,7 @@ import static org.junit.Assert.assertThat;
 
 public class LogArgUtilsTest {
 
-    private Map<String, String> args = new HashMap<>();
+    private final Map<String, String> args = new HashMap<>();
 
     @Test
     public void testAdIfValuePresent() {
