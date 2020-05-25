@@ -33,8 +33,8 @@ public class TestApplication {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Autowired
-    private org.springframework.core.env.Environment springEnv;
+    //@Autowired
+    //private org.springframework.core.env.Environment springEnv;
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(TestApplication.class)
