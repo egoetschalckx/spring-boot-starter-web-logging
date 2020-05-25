@@ -21,7 +21,7 @@ dependencies {
 
     // dont build this in. this library is pointless without spring boot web anyways
     // this is the lowest possible release that supports the required features
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.0.0.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.1.6.RELEASE'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-web:2.1.3.RELEASE'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.1.3.RELEASE'
