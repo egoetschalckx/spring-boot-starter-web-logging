@@ -5,7 +5,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -19,7 +18,7 @@ import static org.junit.Assert.assertThat;
 
 public class LogArgUtilsTest {
 
-    Map<String, String> args = new HashMap<>();
+    private Map<String, String> args = new HashMap<>();
 
     @Test
     public void testAdIfValuePresent() {
