@@ -16,7 +16,7 @@ public class LogEventContextTest {
     private String method = "PATCH";
     private String url = "https://example.com";
 
-    LogEventContext logEventContext = new LogEventContext(
+    private LogEventContext logEventContext = new LogEventContext(
             includeBody,
             spanKind,
             spanId,
