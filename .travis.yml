@@ -4,10 +4,10 @@ jdk:
   #- openjdk8
   - openjdk11
 env:
-  - CODACY_PROJECT_TOKEN=9001
+  - CODACY_PROJECT_TOKEN=a12d803109514a3dad9cfde2c54a68f9
 script: ./gradlew check
 notifications:
   email: false
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  #- bash <(curl -Ls https://coverage.codacy.com/get.sh)
+  - bash <(curl -Ls https://coverage.codacy.com/get.sh)

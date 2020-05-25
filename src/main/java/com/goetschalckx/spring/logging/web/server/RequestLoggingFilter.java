@@ -2,8 +2,8 @@ package com.goetschalckx.spring.logging.web.server;
 
 import com.goetschalckx.spring.logging.web.LogEventContext;
 import com.goetschalckx.spring.logging.web.LoggingConstants;
-import com.goetschalckx.spring.logging.web.span.SpanType;
 import com.goetschalckx.spring.logging.web.span.SpanIdGenerator;
+import com.goetschalckx.spring.logging.web.span.SpanType;
 import org.slf4j.MDC;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.ContentCachingResponseWrapper;
@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RequestLoggingFilter extends OncePerRequestFilter {
