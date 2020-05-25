@@ -21,7 +21,7 @@ Requires `spring-boot-starter-web` `1.4.0.RELEASE` or higher.
 ## Spring Configuration
 `spring-boot-logging-web` includes request & response logging mechanisms for Spring `RestTemplate` and `RestController`.
 
-These capabilities can have negative performance impact, so they are disabled by default.
+These capabilities will have negative performance impact, so they are disabled by default. Including the body of the requests and responses in the log statements will further degrade performance.
 
 The following configuration properties are available for managing logging settings:
 
