@@ -1,5 +1,6 @@
-package com.goetschalckx.spring.http.logging.client;
+package com.goetschalckx.spring.logging.web.client;
 
+import com.goetschalckx.spring.logging.web.LoggingConstants;
 import org.slf4j.Logger;
 import org.springframework.http.client.ClientHttpResponse;
 
@@ -14,7 +15,7 @@ public class ClientLoggingUtils {
             return Integer.toString(response.getStatusCode().value());
         } catch (IOException e) {
             log.error("IOException during response.getStatusCode()", e);
-            return "[unknown]";
+            return LoggingConstants.UNKNOWN;
         }
     }
 

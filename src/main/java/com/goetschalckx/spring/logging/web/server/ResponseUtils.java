@@ -1,12 +1,15 @@
-package com.goetschalckx.spring.http.logging.server;
+package com.goetschalckx.spring.logging.web.server;
 
+import com.goetschalckx.spring.logging.web.LoggingConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 import org.springframework.web.util.WebUtils;
 
+import javax.servlet.ServletResponseWrapper;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponseWrapper;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Collection;
@@ -43,17 +46,8 @@ public class ResponseUtils {
         return headers;
     }
 
-    public static ContentCachingResponseWrapper getResponseWrapper(HttpServletResponse response) {
-        ContentCachingResponseWrapper responseWrapper = WebUtils.getNativeResponse(response, ContentCachingResponseWrapper.class);
-        if (responseWrapper != null) {
-            try {
-                responseWrapper.copyBodyToResponse();
-            } catch (IOException e) {
-                log.error("IOException during copyBodyToResponse()", e);
-            }
-        }
-
-        return responseWrapper;
+    public static HttpServletResponseWrapper getResponseWrapper(HttpServletResponse response) {
+        return WebUtils.getNativeResponse(response, HttpServletResponseWrapper.class);
     }
 
     public static String getResponseBody(HttpServletResponse response) {
@@ -75,7 +69,7 @@ public class ResponseUtils {
                 try {
                     payload = new String(buf, 0, buf.length, responseWrapper.getCharacterEncoding());
                 } catch (UnsupportedEncodingException ex) {
-                    payload = "[unknown]";
+                    payload = LoggingConstants.UNKNOWN;
                 }
 
                 responseBody = payload;

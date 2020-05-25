@@ -1,4 +1,4 @@
-package com.goetschalckx.spring.http.logging;
+package com.goetschalckx.spring.logging.web;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

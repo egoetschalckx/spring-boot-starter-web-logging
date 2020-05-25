@@ -1,4 +1,4 @@
-package com.goetschalckx.spring.http.logging.span;
+package com.goetschalckx.spring.logging.web.span;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

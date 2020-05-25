@@ -1,4 +1,4 @@
-package com.goetschalckx.spring.http.logging.client;
+package com.goetschalckx.spring.logging.web.client;
 
 import org.springframework.boot.web.client.RestTemplateCustomizer;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;

@@ -1,8 +1,8 @@
-package com.goetschalckx.spring.http.logging.client;
+package com.goetschalckx.spring.logging.web.client;
 
-import com.goetschalckx.spring.http.logging.LogArgUtils;
-import com.goetschalckx.spring.http.logging.LogEventContext;
-import com.goetschalckx.spring.http.logging.LoggingConstants;
+import com.goetschalckx.spring.logging.web.LogArgUtils;
+import com.goetschalckx.spring.logging.web.LogEventContext;
+import com.goetschalckx.spring.logging.web.LoggingConstants;
 
 import net.logstash.logback.marker.Markers;
 import org.slf4j.Logger;
@@ -28,7 +28,7 @@ public class ClientLogger {
                 responseBody = StreamUtils.copyToString(response.getBody(), StandardCharsets.UTF_8);
             } catch (IOException e) {
                 log.error("IOException during copyToString");
-                responseBody = "[unknown]";
+                responseBody = LoggingConstants.UNKNOWN;
             }
 
             log.info(

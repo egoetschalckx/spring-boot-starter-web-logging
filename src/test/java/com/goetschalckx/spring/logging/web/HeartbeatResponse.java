@@ -1,4 +1,4 @@
-package com.goetschalckx.spring.http.logging;
+package com.goetschalckx.spring.logging.web;
 
 import java.time.Instant;
 

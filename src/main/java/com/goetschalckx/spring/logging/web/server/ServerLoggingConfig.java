@@ -1,7 +1,7 @@
-package com.goetschalckx.spring.http.logging.server;
+package com.goetschalckx.spring.logging.web.server;
 
-import com.goetschalckx.spring.http.logging.LoggingConstants;
-import com.goetschalckx.spring.http.logging.span.SpanIdGenerator;
+import com.goetschalckx.spring.logging.web.LoggingConstants;
+import com.goetschalckx.spring.logging.web.span.SpanIdGenerator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -10,15 +10,13 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConditionalOnProperty(
-        prefix = LoggingConstants.LOGGING_PREFIX,
+        prefix = LoggingConstants.LOGGING_PREFIX_SERVER,
         name = LoggingConstants.LOGGING_ENABLED,
         havingValue = "true")
 public class ServerLoggingConfig {
 
-    private static final String LOGGING_RESPONSE_BODY_KEY = "${" + LoggingConstants.LOGGING_PREFIX + "." + LoggingConstants.LOGGING_RESPONSE_BODY + ":false}";
-
     // TODO: make this @Value a ConfigurationProperty instead
-    @Value(LOGGING_RESPONSE_BODY_KEY)
+    @Value(LoggingConstants.LOGGING_SERVER_RESPONSE_BODY_KEY)
     private boolean includeBody = false;
 
     @Bean
