@@ -1,8 +1,7 @@
 language: java
 dist: trusty
 jdk:
-  #- openjdk8
-  - openjdk11
+  - openjdk8
 env:
   - CODACY_PROJECT_TOKEN=a12d803109514a3dad9cfde2c54a68f9
 script: ./gradlew check
