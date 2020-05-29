@@ -16,7 +16,7 @@ by Eric Goetschalckx
 Provides automated web request and response logging for Spring (including advanced logback functionality)
 
 ## Minimum Requirements
-Requires `spring-boot-starter-web` `2.0.0.RELEASE` or higher.
+Requires `spring-boot-starter-web` `1.4.0.RELEASE` or higher.
   
 ## Spring Configuration
 `spring-boot-logging-web` includes request & response logging mechanisms for Spring `RestTemplate` and `RestController`.
@@ -32,10 +32,10 @@ logging:
   # Spring Web request response logging settings
   web:
       
-      # Spring RestTemplate response logging settings
+      # Spring RestTemplate request logging settings
       client:
 
-        # RestTemplate request response bo logging enabled
+        # RestTemplate request logging enabled
         # Optional (default is false)
         enabled: true
      
@@ -44,14 +44,14 @@ logging:
         # Optional (default is false)
         include-body: true
 
-      # Spring RestTemplate response logging settings
+      # Spring RestController request logging settings
       server:
 
-        # RestTemplate request response bo logging enabled
+        # RestController request logging enabled
         # Optional (default is false)
         enabled: true
      
-        # Include web request response body in logs
+        # Include response body in logs
         # Has performance impact due to byte stream copying
         # Optional (default is false)
         include-body: true

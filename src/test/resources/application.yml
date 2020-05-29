@@ -1,4 +1,6 @@
 logging:
+  json:
+    pretty-print: true
   web:
     client:
       enabled: true
@@ -6,3 +8,7 @@ logging:
     server:
       enabled: true
       include-body: true
+
+spring:
+  profiles:
+    active: log-json

@@ -1,5 +1,6 @@
 package com.goetschalckx.spring.logging.web;
 
+import org.slf4j.Logger;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -25,6 +26,8 @@ import java.util.concurrent.ThreadLocalRandom;
 @RequestMapping("heartbeat")
 public class HeartbeatController {
 
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(HeartbeatController.class);
+
     private final RestTemplate restTemplate;
 
     public HeartbeatController(RestTemplateBuilder restTemplateBuilder) {
@@ -33,7 +36,9 @@ public class HeartbeatController {
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody HeartbeatResponse heartbeat() {
-        //ResponseEntity<HeartbeatResponse> responseResponseEntity = getHeartbeat();
+        ResponseEntity<HeartbeatResponse> responseResponseEntity = getHeartbeat();
+
+        log.debug(responseResponseEntity.toString());
 
         return new HeartbeatResponse(Instant.now());
     }
